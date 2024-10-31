@@ -59,5 +59,11 @@ class TestPigLatin(unittest.TestCase):
         translation = translator.translate()
         self.assertEqual( "ellway-eingbay", translation)
 
+    #def test_translator_input_containing_uppercase_words(self):
+    #    translator = PigLatin("APPLE")
+    #    #phrase = translator.get_phrase()
+    #    translation = translator.translate()
+    #    self.assertEqual( "APPLEYAY", translation)
+
 
 
