@@ -17,3 +17,15 @@ class TestPigLatin(unittest.TestCase):
         translation = translator.translate()
         self.assertEqual( "nil", translation)
 
+    def test_translator_input_ending_with_y(self):
+        translator = PigLatin("any")
+        #phrase = translator.get_phrase()
+        translation = translator.translate()
+        self.assertEqual( "anynay", translation)
+
+    def test_translator_input_ending_with_other_vowel(self):
+        translator = PigLatin("apple")
+        #phrase = translator.get_phrase()
+        translation = translator.translate()
+        self.assertEqual( "appleyay", translation)
+
