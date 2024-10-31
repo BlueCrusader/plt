@@ -41,3 +41,11 @@ class TestPigLatin(unittest.TestCase):
         translation = translator.translate()
         self.assertEqual( "ellohay", translation)
 
+    def test_translator_input_starting_with_more_consonant(self):
+        translator = PigLatin("known")
+        #phrase = translator.get_phrase()
+        translation = translator.translate()
+        self.assertEqual( "ownknay", translation)
+
+
+
