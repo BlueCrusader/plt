@@ -8,4 +8,8 @@ class PigLatin:
         return self._phrase
 
     def translate(self) -> str:
+        if (not (self._phrase and self._phrase.strip())):
+            self._translation = "nil"
+
+
         return self._translation
