@@ -10,12 +10,15 @@ class PigLatin:
     def translate(self) -> str:
         if not (self._phrase and self._phrase.strip()):
             self._translation = "nil"
+        else:
 
-        vowels = ('a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y')
-        if self._phrase.endswith(vowels):
-            if self._phrase.endswith('y'):
-                self._translation = self._translation + "nay"
+            vowels = ('a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y')
+            if self._phrase.endswith(vowels):
+                if self._phrase.endswith('y'):
+                    self._translation = self._translation + "nay"
+                else:
+                 self._translation = self._translation + "yay"
             else:
-                self._translation = self._translation + "yay"
+                self._translation = self._translation + "ay"
 
         return self._translation
