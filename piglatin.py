@@ -14,28 +14,40 @@ class PigLatin:
         if not (self._phrase and self._phrase.strip()):
             self._translation = "nil"
         else:
-            self._translation = self._phrase
-            first_letter = ""
-            consonants = ('q', 'w', 'r', 't', 'p', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Q', 'W', 'R', 'T', 'P', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M')
-            #if self._phrase.startswith(consonants):
-            #    first_letter = self._phrase[0]
-            #    self._translation = self._translation[1:]
-            #    self._translation = self._translation + first_letter
+            #self._translation = self._phrase
+            self._translation = ""
+            translation_list = self._phrase.split()
+            count = 0
+            translation_result_list = []
+            for x in translation_list:
 
-            while self._translation.startswith(consonants):
-                if self._translation.startswith(consonants):
-                    first_letter = self._translation[0]
-                    self._translation = self._translation[1:]
-                    self._translation = self._translation + first_letter
+                translation_word = x
 
+                first_letter = ""
+                consonants = (
+                'q', 'w', 'r', 't', 'p', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Q',
+                'W', 'R', 'T', 'P', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M')
 
-            vowels = ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
-            if self._translation.endswith(vowels):
-                 self._translation = self._translation + "yay"
-            else:
-                if self._phrase.endswith('y'):
-                    self._translation = self._translation + "nay"
+                while translation_word.startswith(consonants):
+                    if translation_word.startswith(consonants):
+                        first_letter = translation_word[0]
+                        translation_word = translation_word[1:]
+                        translation_word = translation_word + first_letter
+
+                vowels = ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
+                if translation_word.endswith(vowels):
+                    translation_word = translation_word + "yay"
                 else:
-                    self._translation = self._translation + "ay"
+                    if translation_word.endswith('y'):
+                        translation_word = translation_word + "nay"
+                    else:
+                        translation_word = translation_word + "ay"
+
+                self._translation = self._translation + translation_word
+                count = count + 1
+                if (len(translation_list) != count):
+                    self._translation = self._translation + " "
+
+
 
         return self._translation
