@@ -53,5 +53,11 @@ class TestPigLatin(unittest.TestCase):
         translation = translator.translate()
         self.assertEqual( "ellohay orldway", translation)
 
+    def test_translator_input_containing_seperated_words(self):
+        translator = PigLatin("well-being")
+        #phrase = translator.get_phrase()
+        translation = translator.translate()
+        self.assertEqual( "ellway-eingbay", translation)
+
 
 
