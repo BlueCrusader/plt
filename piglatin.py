@@ -1,4 +1,5 @@
 from gettext import translation
+from string import punctuation
 
 
 class PigLatin:
@@ -14,9 +15,29 @@ class PigLatin:
         if not (self._phrase and self._phrase.strip()):
             self._translation = "nil"
         else:
-            #self._translation = self._phrase
+            punctuations = ('.', ',', ';', ':', '’', '?', '!', '(', ')', '!', '!', '!', '!', '!')
+            punctuation = ""
+
+            self._translation = self._phrase
+            translation_phrase = self._translation
+
+            if self._translation.endswith(punctuations):
+            #    punctuation = self._translation[-1]
+                N = 1
+                lengthA = len(self._translation)
+                punctuation = self._translation[lengthA - N:]
+            #    translation_phrase = self._translation[:1]
+                translation_phrase = translation_phrase[:len(translation_phrase) - 1]
+            else:
+                translation_phrase = self._translation
+
+
+
             self._translation = ""
-            translation_list = self._phrase.split()
+            #translation_list = self._phrase.split()
+            translation_list = translation_phrase.split()
+
+
             count = 0
 
             translation_result_list = []
@@ -68,5 +89,6 @@ class PigLatin:
                     self._translation = self._translation + " "
 
 
+            self._translation = self._translation + punctuation
 
         return self._translation
